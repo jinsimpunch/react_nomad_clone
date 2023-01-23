@@ -1,12 +1,11 @@
 import React from "react";
 
 function MinutesToHours() {
-  const [amount, setAmount] = React.useState()
+  const [amount, setAmount] = React.useState(0)
   const [flipped, setFlipped] = React.useState(false)
 
   const onChange = (e) => {
     setAmount(e.target.value)
-    console.log(e.target.value)
   }
 
   const reset = () => {
@@ -35,16 +34,53 @@ function MinutesToHours() {
 }
 
 function KmToMiles() {
-  return <h3>KM 2 M</h3>
+
+  const [km, setKm] = React.useState(0)
+  const [flipped, setFlipped] = React.useState(false)
+
+  const onChange = (e) => {
+    setKm(e.target.value)
+  }
+
+  const reset = (e) => {
+    setKm(0)
+  }
+
+  const flip = (e) => {
+    setFlipped(!flipped)
+    reset()
+  }
+
+  // 1km = 0.621371
+  return (
+    <div>
+      <label>km</label>
+      <input disabled={flipped} onChange={onChange} value={km} type="number" />
+      <br />
+      <br />
+      <label>mile</label>
+      <input disabled={!flipped} onChange={onChange} value={km * 0.621371} type="number" />
+      <br />
+      <button onClick={reset}>reset</button>
+      <button onClick={flip}>{flipped ? "Turn back" : "flip"}</button>
+
+    </div>
+  );
+
+
+
+
+
 }
 
 function App() {
 
-  const [index, setIndex] = React.useState(0)
+  const [index, setIndex] = React.useState("0")
   const onSelect = (e) => {
     setIndex(e.target.value)
-    console.log(index)
   }
+
+
 
   return (
     <div>
@@ -55,9 +91,9 @@ function App() {
         <option value="2">KM & Miles</option>
       </select>
       <hr />
-      {index === 0 ? "Please select unit!" : null}
-      {index === 1 ? <MinutesToHours /> : null}
-      {index === 2 ? <KmToMiles /> : null}
+      {index === "0" ? "Please select unit!" : null}
+      {index === "1" ? <MinutesToHours /> : null}
+      {index === "2" ? <KmToMiles /> : null}
     </div>
   );
 }
