@@ -1,8 +1,5 @@
 import { useState } from "react";
 
-
-
-
 function App() {
 
   const [toDo, setTodo] = useState("")
@@ -32,6 +29,10 @@ function App() {
         />
         <button>Add To Do</button>
       </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index) => <li key={index}>{item}</li>)}
+      </ul>
     </div>
   );
 }
