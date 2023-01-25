@@ -11,8 +11,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="detail" element={<Detail />} />
         <Route path="/" element={<Home />} />
+        <Route path="/movie/:id" element={<Detail />} />
       </Routes>
     </Router>
   )

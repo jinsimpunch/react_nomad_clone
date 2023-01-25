@@ -13,6 +13,7 @@ function Home() {
         ).json();
 
         setMovies(json.data.movies)
+        console.log(json)
         setLoading(false)
     }
 
@@ -20,7 +21,6 @@ function Home() {
         getMovies()
     }, [])
 
-    console.log(movies)
 
     return (
         <div >
@@ -30,6 +30,7 @@ function Home() {
                     {movies.map((movie) => (
                         <Movie
                             key={movie.id}
+                            id={movie.id}
                             coverImg={movie.medium_cover_image}
                             title={movie.title}
                             summary={movie.summary}
